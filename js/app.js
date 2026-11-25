@@ -87,7 +87,8 @@ async function renderHome(token) {
     <h1>${lang === 'de' ? 'Aktorik &amp; Sensorik,<br><em>bewegt erklärt.</em>' : 'Actuators &amp; sensors,<br><em>explained in motion.</em>'}</h1>
     <p class="hero-lead">${lang === 'de'
     ? `Schieb einen Regler. Sieh, was passiert. Dann erst kommt die Formel. ${CHAPTERS.length} Blätter, jedes mit einer Zeichnung, die sich bewegt.`
-    : `Move a slider. Watch what happens. Only then comes the formula. ${CHAPTERS.length} sheets, each with a drawing that moves.`}</p>`;
+    : `Move a slider. Watch what happens. Only then comes the formula. ${CHAPTERS.length} sheets, each with a drawing that moves.`}</p>
+    <p class="credit"><span>${tr(UI.credit, lang)}</span><span>${tr(UI.basedOn, lang)}</span></p>`;
   app.appendChild(hero);
 
   const stageSlot = el('div', 'hero-stage');

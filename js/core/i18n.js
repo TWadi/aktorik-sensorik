@@ -77,5 +77,7 @@ export const UI = {
     de: 'Eigene Texte und Zeichnungen. Kein offizielles Kursmaterial. Ohne Gewähr.',
     en: 'Original texts and drawings. Not official course material. No warranty.',
   },
+  credit: { de: 'Gestaltet und entwickelt von <b>Wadi Touil</b>', en: 'Designed and developed by <b>Wadi Touil</b>' },
+  basedOn: { de: 'Basiert auf Vorlesung und Folien von Prof. Morales', en: 'Based on the lecture and slides by Prof. Morales' },
   source: { de: 'Quelltext auf GitHub', en: 'Source on GitHub' },
 };
