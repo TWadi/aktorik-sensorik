@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aktorik &amp; Sensorik · bewegt erklärt</title>
+  <meta name="description" content="Aktorik und Sensorik mit interaktiven Animationen erklärt, auf Deutsch und Englisch: Gleichstrommotor, H-Brücke, Regelung, Wheatstone-Brücke, Drehgeber, Hall-Sensor und mehr.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aktorik &amp; Sensorik · bewegt erklärt">
+  <meta property="og:description" content="Actuators and sensors explained with interactive animations, in German and English.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23132c4d'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23e9f1fb' stroke-width='4'/%3E%3Cpath d='M32 15v34' stroke='%23e2652e' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+    // set the theme before first paint (no flash)
+    try {
+      var t = localStorage.getItem('as.theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = t;
+    } catch (e) { /* default theme stays */ }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#app">Zum Inhalt · Skip to content</a>
+  <header class="top">
+    <a class="brand" href="#/" aria-label="Aktorik &amp; Sensorik">
+      <span class="brand-mark" aria-hidden="true">A&amp;S</span>
+      <span class="brand-text"><b>Aktorik &amp; Sensorik</b><span class="brand-sub">bewegt erklärt</span></span>
+    </a>
+    <nav class="top-nav" aria-label="Navigation">
+      <a href="#/" data-nav="sheets">Alle Blätter</a>
+      <div class="seg lang" role="group" aria-label="Sprache · Language">
+        <button type="button" data-lang="de">DE</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <button type="button" class="tool" data-act="theme" aria-label="Hell / Blaupause">◐</button>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="foot">
+    <span class="foot-note"></span>
+    <a class="foot-src" href="https://github.com/TWadi/aktorik-sensorik" rel="noopener"></a>
+  </footer>
+
+  <noscript><p style="padding:2rem">Diese Seite braucht JavaScript für die Animationen. · This site needs JavaScript for its animations.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animation gallery (review tool)</title>
+  <link rel="stylesheet" href="../css/site.css">
+  <style>
+    main { width: min(100%, 52rem); }
+    .g-item { margin: 0 0 2.5rem; }
+    .g-item h2 { font-size: 1rem; margin: 0 0 .4rem; }
+    .g-err { color: var(--bad); }
+  </style>
+</head>
+<body>
+  <!-- Review tool: every animation of the chosen sheets on one page.
+       tools/gallery.html?c=a05,a06&lang=en&theme=dark   (c omitted = all sheets) -->
+  <main id="gallery"></main>
+  <script type="module">
+    import { CHAPTERS } from '../js/manifest.js';
+    import { mountAnim } from '../js/core/stage.js';
+    import { applyTheme } from '../js/core/theme.js';
+
+    const q = new URLSearchParams(location.search);
+    const lang = q.get('lang') === 'en' ? 'en' : 'de';
+    const wanted = q.get('c') ? q.get('c').toLowerCase().split(',') : null;
+    applyTheme(q.get('theme') === 'dark' ? 'dark' : 'light');
+    document.documentElement.lang = lang;
+    const host = document.getElementById('gallery');
+    window.gallery = { anims: [] };
+
+    for (const meta of CHAPTERS) {
+      if (wanted && !wanted.includes(meta.id)) continue;
+      const box = document.createElement('section');
+      box.className = 'g-item';
+      host.appendChild(box);
+      try {
+        const mod = await import(`../js/chapters/${meta.id}.js`);
+        const defs = mod.default.blocks.filter((b) => b.type === 'anim').map((b) => b.def);
+        defs.forEach((def) => {
+          const item = document.createElement('div');
+          item.className = 'g-item';
+          item.id = def.id;
+          item.innerHTML = `<h2>${meta.id.toUpperCase()} · ${def.id}</h2>`;
+          box.appendChild(item);
+          mountAnim(def, item, { lang });
+          window.gallery.anims.push(def.id);
+        });
+      } catch (err) {
+        box.innerHTML = `<p class="g-err">${meta.id}: ${err.message}</p>`;
+      }
+    }
+    document.title = `gallery: ${window.gallery.anims.length} animations`;
+  </script>
+</body>
+</html>

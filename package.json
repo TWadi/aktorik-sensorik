@@ -1,0 +1,12 @@
+{
+  "name": "aktorik-sensorik",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Actuators and sensors explained with interactive animations, in German and English.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node tools/serve.mjs 8770",
+    "test": "node --test tests/"
+  }
+}
